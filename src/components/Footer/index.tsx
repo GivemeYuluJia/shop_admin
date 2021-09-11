@@ -17,7 +17,7 @@ export default () => {
       links={[
         {
           key: 'Ant Design Pro',
-          title: 'Ant Design Pro',
+          title: '颜哥永远的神',
           href: 'https://pro.ant.design',
           blankTarget: true,
         },
@@ -29,7 +29,7 @@ export default () => {
         },
         {
           key: 'Ant Design',
-          title: 'Ant Design',
+          title: '颜哥牛逼',
           href: 'https://ant.design',
           blankTarget: true,
         },

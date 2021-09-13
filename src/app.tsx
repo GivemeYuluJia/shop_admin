@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import { RequestConfig } from 'umi';
+import { notification } from 'antd'
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/login';
@@ -26,13 +27,19 @@ export async function getInitialState(): Promise<{
 }> {
   const fetchUserInfo = async () => {
     try {
-      const msg = await queryCurrentUser();
-      return msg.data;
+      let info = JSON.parse(localStorage.getItem('currentUser')!) 
+      if(!info){
+        const msg = await queryCurrentUser();
+        localStorage.setItem('currentUser', JSON.stringify(msg.data))
+        return msg.data;
+      }
+      return info
     } catch (error) {
       history.push(loginPath);
     }
     return undefined;
   };
+  
   // 如果是登录页面，不执行
   if (history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
@@ -49,14 +56,24 @@ export async function getInitialState(): Promise<{
 }
 // 请求拦截器 在请求之前 添加header头
 const authHeaderInterceptor = (url: string, options: RequestOptionsInit) => {
-  const authHeader = { Authorization: 'Bearer xxxxxx' };
+  const token = localStorage.getItem('access_token') || ''
+  const authHeader = { Authorization: `Bearer ${token}` };
   return {
     url: `${url}`,
     options: { ...options, interceptors: true, headers: authHeader },
   };
 };
 export const request: RequestConfig = {
-  // errorHandler,
+  errorHandler: (error: ResponseError) => {
+    // const { messages } = getIntl(getLocale());
+    const { response } = error;
+    const { status, url } = response;
+    notification.error({
+      description: '您的网络发生异常，无法连接服务器',
+      message: `网络异常 ${status}: ${url}`,
+    });
+    throw error;
+  },
   // 新增自动添加AccessToken的请求前拦截器
   requestInterceptors: [authHeaderInterceptor],
 };
@@ -64,6 +81,7 @@ export const request: RequestConfig = {
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
+  console.log(initialState,'initialState')
   return {
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Spin } from 'antd';
 import { history, useModel } from 'umi';
@@ -21,6 +21,9 @@ const loginOut = async () => {
   const { redirect } = query;
   // Note: There may be security issues, please note
   if (window.location.pathname !== '/login' && !redirect) {
+    // 清除本地存储的token和currentUser
+    localStorage.removeItem('access_token')
+    localStorage.removeItem('currentUser')
     history.replace({
       pathname: '/login',
       search: stringify({
@@ -32,7 +35,6 @@ const loginOut = async () => {
 
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   const { initialState, setInitialState } = useModel('@@initialState');
-
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
       const { key } = event;

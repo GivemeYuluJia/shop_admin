@@ -7,12 +7,13 @@ import {
   WeiboCircleOutlined,
 } from '@ant-design/icons';
 import { Alert, Space, message, Tabs } from 'antd';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProForm, { ProFormCaptcha, ProFormCheckbox, ProFormText } from '@ant-design/pro-form';
 import { useIntl, Link, history, FormattedMessage, SelectLang, useModel } from 'umi';
 import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
+import { stringify } from 'querystring';
 
 import styles from './index.less';
 
@@ -37,6 +38,11 @@ const Login: React.FC = () => {
 
   const intl = useIntl();
 
+  useEffect(() => {
+    const { pathname } = history.location;
+    const access = localStorage.getItem("currentUser")
+    if(access) window.location.replace('/person')
+  },[])
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
     if (userInfo) {
@@ -57,6 +63,8 @@ const Login: React.FC = () => {
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
         });
+        //token存入loaclStorage
+        localStorage.setItem('access_token',msg.token!)
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         /** 此方法会跳转到 redirect 参数所在的位置 */
@@ -79,7 +87,6 @@ const Login: React.FC = () => {
     setSubmitting(false);
   };
   const { status, type: loginType } = userLoginState;
-
   return (
     <div className={styles.container}>
       <div className={styles.lang} data-lang>

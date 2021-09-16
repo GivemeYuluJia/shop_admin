@@ -21,18 +21,10 @@ const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION } = process.env;
  * 如果是 pro 的预览，默认是有权限的
  */
 let access = ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION === 'site' ? 'admin' : '';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 const getAccess = () => {
   return access;
 };
 
-<<<<<<< HEAD
 const data = {
   name: '骏哥永远的神',
   avatar: '/火星小黄鸭鸭.svg',
@@ -85,21 +77,12 @@ const data = {
   phone: '0752-268888888',
 }
 
-=======
->>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
 // 代码中会兼容本地 service mock 以及部署站点的静态数据
 export default {
   // 支持值为 Object 和 Array
   'GET /api/currentUser': (req: Request, res: Response) => {
     if (!getAccess()) {
-<<<<<<< HEAD
       console.log(getAccess())
-=======
-<<<<<<< HEAD
-      console.log(getAccess())
-=======
->>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
       res.status(401).send({
         data: {
           isLogin: false,
@@ -112,7 +95,6 @@ export default {
     }
     res.send({
       success: true,
-<<<<<<< HEAD
       data
     })
     // res.send({
@@ -169,60 +151,6 @@ export default {
     //     phone: '0752-268888888',
     //   },
     // });
-=======
-      data: {
-        name: '骏哥永远的神',
-        avatar: '/火星小黄鸭鸭.svg',
-        userid: '00000001',
-        email: 'antdesign@alipay.com',
-        signature: '海纳百川，有容乃大',
-        title: '交互专家',
-        group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
-        tags: [
-          {
-            key: '0',
-            label: '很有想法的',
-          },
-          {
-            key: '1',
-            label: '专注设计',
-          },
-          {
-            key: '2',
-            label: '辣~',
-          },
-          {
-            key: '3',
-            label: '大长腿',
-          },
-          {
-            key: '4',
-            label: '川妹子',
-          },
-          {
-            key: '5',
-            label: '海纳百川',
-          },
-        ],
-        notifyCount: 12,
-        unreadCount: 11,
-        country: 'China',
-        access: getAccess(),
-        geographic: {
-          province: {
-            label: '浙江省',
-            key: '330000',
-          },
-          city: {
-            label: '杭州市',
-            key: '330100',
-          },
-        },
-        address: '西湖区工专路 77 号',
-        phone: '0752-268888888',
-      },
-    });
->>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
   },
   // GET POST 可省略
   'GET /api/users': [
@@ -253,10 +181,6 @@ export default {
         status: 'ok',
         type,
         currentAuthority: 'admin',
-<<<<<<< HEAD
-        token: 'Bearer'
-=======
-<<<<<<< HEAD
         token: 'Bearer'
       });
       data.name = '管理员';
@@ -283,22 +207,10 @@ export default {
       return;
     }
     if (password === 'yj123' && username === '骏哥永远的神') {
-=======
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
-      });
-      access = 'admin';
-      return;
-    }
-    if (password === 'ant.design' && username === 'user') {
->>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
       res.send({
         status: 'ok',
         type,
         currentAuthority: 'user',
-<<<<<<< HEAD
-        token: 'Bearer'
-=======
-<<<<<<< HEAD
         token: 'Bearer'
       });
       data.name = '骏哥永远的神',
@@ -307,11 +219,6 @@ export default {
       data.email =  'antdesign@alipay.com';
       access = 'junge';
       data.access = 'junger';
-=======
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
-      });
-      access = 'user';
->>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
       return;
     }
     if (type === 'mobile') {

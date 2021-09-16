@@ -1,13 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { PlusOutlined, EllipsisOutlined, UserOutlined } from '@ant-design/icons';
-<<<<<<< HEAD
-import { Button, Tag, Space, Menu, Dropdown, Avatar, Typography } from 'antd';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
-import { getUserList, updateUserInfo } from '@/services/usersetting/userlist'
-import { userItemType } from './const';
-=======
 import { Button, Tag, Space, Avatar, Typography, Modal, message } from 'antd';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable, { TableDropdown } from '@ant-design/pro-table';
@@ -15,7 +8,6 @@ import type { ProFormInstance } from '@ant-design/pro-form';
 import { getUserList, updateUserInfo, deleteUser } from '@/services/usersetting/userlist'
 import { userItemType } from './const';
 import AddModel from './components/addModel';
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 
 const columns: ProColumns[] = [
     {
@@ -94,13 +86,9 @@ const columns: ProColumns[] = [
     }
 ]
 const UserList = () => {
-<<<<<<< HEAD
-    const actionRef = useRef<ActionType>();
-=======
     const [modelVisible, setModelVisible] = useState<boolean>(false)
     const actionRef = useRef<ActionType>();
     const formRef = useRef<ProFormInstance>();
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 
     const getData = async(params: any) => {
         const data = await getUserList(params)
@@ -116,14 +104,10 @@ const UserList = () => {
             success: true
         }
     }
-<<<<<<< HEAD
-
-=======
     const deleteUserItem = async(params:{key:number,row:userItemType}) => {
         await deleteUser(params)
     }
     
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
     return (
         <PageContainer>
             <ProTable
@@ -139,13 +123,10 @@ const UserList = () => {
                         console.log(rowKey, data, row);
                         update({key: Number(rowKey), data})
                     },
-<<<<<<< HEAD
-=======
                     onDelete: async (key, row) => {
                         deleteUserItem({key:Number(key),row})
                         console.log(key, row);
                     },
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
                 }}
                 rowKey="id"
                 search={{
@@ -157,29 +138,22 @@ const UserList = () => {
                 dateFormatter="string"
                 headerTitle="客户列表"
                 toolBarRender={() => [
-<<<<<<< HEAD
-                    <Button key="button" icon={<PlusOutlined />} type="primary">
-=======
                     <Button 
                         key="button" 
                         icon={<PlusOutlined />}
                         type="primary"
                         onClick={() => setModelVisible(true)}
                     >
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
                         新建
                     </Button>,
                 ]}
             />
-<<<<<<< HEAD
-=======
             <AddModel 
                 visible={modelVisible}
                 setModelVisible={setModelVisible}
                 formRef={formRef}
                 actionRef={actionRef}
             />
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
         </PageContainer>
     )
 }

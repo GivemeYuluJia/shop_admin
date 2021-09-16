@@ -1,9 +1,6 @@
 import { Request, Response } from 'express';
-<<<<<<< HEAD
-=======
 import moment from 'moment';
 
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 let userList = [
     {
         id: 1,
@@ -121,8 +118,6 @@ export default {
             status: 'ok',
             data: userList,
         })
-<<<<<<< HEAD
-=======
     },
     'POST /api/adduser': (req: Request, res: Response) => {
         let { username, useremail } = req.query
@@ -151,6 +146,5 @@ export default {
             status: 'ok',
             userList
         })
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
     }
 }

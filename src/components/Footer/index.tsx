@@ -17,7 +17,15 @@ export default () => {
       links={[
         {
           key: 'Ant Design Pro',
+<<<<<<< HEAD
           title: '颜哥永远的神',
+=======
+<<<<<<< HEAD
+          title: '颜哥永远的神',
+=======
+          title: 'Ant Design Pro',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
           href: 'https://pro.ant.design',
           blankTarget: true,
         },
@@ -29,7 +37,15 @@ export default () => {
         },
         {
           key: 'Ant Design',
+<<<<<<< HEAD
           title: '颜哥牛逼',
+=======
+<<<<<<< HEAD
+          title: '颜哥牛逼',
+=======
+          title: 'Ant Design',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
           href: 'https://ant.design',
           blankTarget: true,
         },

@@ -1,10 +1,22 @@
 export default {
+<<<<<<< HEAD
   'pages.layouts.userLayout.title': '骏哥 是中国大陆最具影响力的 男人',
+=======
+<<<<<<< HEAD
+  'pages.layouts.userLayout.title': '骏哥 是中国大陆最具影响力的 男人',
+=======
+  'pages.layouts.userLayout.title': 'Ant Design 是西湖区最具影响力的 Web 设计规范',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
   'pages.login.accountLogin.tab': '账户密码登录',
   'pages.login.accountLogin.errorMessage': '错误的用户名和密码(admin/ant.design)',
   'pages.login.failure': '登录失败，请重试！',
   'pages.login.success': '登录成功！',
+<<<<<<< HEAD
+  'pages.login.username.placeholder': '用户名: admin or visitor',
+=======
   'pages.login.username.placeholder': '用户名: admin or user',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
   'pages.login.username.required': '用户名是必填项！',
   'pages.login.password.placeholder': '密码: ant.design',
   'pages.login.password.required': '密码是必填项！',

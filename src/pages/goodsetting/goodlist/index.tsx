@@ -1,37 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { PlusOutlined, EllipsisOutlined, UserOutlined } from '@ant-design/icons';
-<<<<<<< HEAD
-import { Button, Tag, Space, Menu, Dropdown, Avatar, Typography } from 'antd';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
-import { getUserList, updateUserInfo } from '@/services/usersetting/userlist'
-import { userItemType } from './const';
-=======
-import { Button, Tag, Space, Avatar, Typography, Modal, message } from 'antd';
+import { Button, Tag, Space, Image, Typography, Modal, message } from 'antd';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable, { TableDropdown } from '@ant-design/pro-table';
 import type { ProFormInstance } from '@ant-design/pro-form';
-import { getUserList, updateUserInfo, deleteUser } from '@/services/usersetting/userlist'
-import { userItemType } from './const';
-import AddModel from './components/addModel';
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
-
+import { getGoodList, updateGoodInfo, deleteGood, fetchFormType } from '@/services/goodsetting/goodlist'
+import { goodItemType, formType } from './const';
+import AddModel from '@/mycomponents/addModel';
 const columns: ProColumns[] = [
     {
-        title: '头像',
-        dataIndex: 'avater_url',
+        title: '商品图',
+        dataIndex: 'cover_url',
         editable: false,
         hideInSearch: true,
         width: 68,
         render: (val, record): any => (
-            <Avatar src={record.avater_url} size={32} icon={<UserOutlined />}></Avatar>
+            <Image
+                width={46}
+                src={record.cover_url}
+                placeholder={
+                    <Image
+                        preview={false}
+                        src={record.cover_url}
+                        width={200}
+                    />
+                }
+            />
         )
     },
     {
-        title: '用户名',
-        dataIndex: 'username',
+        title: '标题',
+        dataIndex: 'title',
         copyable: true,
+        editable: false,
         ellipsis: true,
         formItemProps: {
             rules: [
@@ -43,26 +45,57 @@ const columns: ProColumns[] = [
         },
     },
     {
-        title: '邮箱',
-        dataIndex: 'useremail'
+        title: '价格',
+        hideInSearch: true,
+        dataIndex: 'price'
     },
     {
-        title: '状态',
-        dataIndex: 'status',
+        title: '库存',
+        hideInSearch: true,
+        dataIndex: 'stock'
+    },
+    {
+        title: '销量',
+        hideInSearch: true,
+        dataIndex: 'sales'
+    },
+    {
+        title: '是否上架',
+        dataIndex: 'is_on',
         filters: true,
         onFilter: true,
         valueType: 'select',
         hideInSearch: true,
         valueEnum: {
-            0: { text: '禁用'},
-            1: { text: '启用'},
+            0: { text: '未上架'},
+            1: { text: '已上架'},
         },
         render: (val, record): any => (
-            record.status === '1' ? (
-                <Tag color="success">启用</Tag>
+            record.is_on === '1' ? (
+                <Tag color="success">已上架</Tag>
             ) 
             : (
-                <Tag color="error">禁用</Tag>
+                <Tag color="error">未上架</Tag>
+            )
+        )
+    },
+    {
+        title: '是否推荐',
+        dataIndex: 'is_recommend',
+        filters: true,
+        onFilter: true,
+        valueType: 'select',
+        hideInSearch: true,
+        valueEnum: {
+            0: { text: '未推荐'},
+            1: { text: '已推荐'},
+        },
+        render: (val, record): any => (
+            record.is_recommend === '1' ? (
+                <Tag color="success">已推荐</Tag>
+            ) 
+            : (
+                <Tag color="error">未推荐</Tag>
             )
         )
     },
@@ -81,49 +114,46 @@ const columns: ProColumns[] = [
                 <Typography.Link 
                     key="editable"
                     onClick={() => {
-                        console.log(action?.startEditable?.(record.id),'33')
+                        // console.log(action?.startEditable?.(record.id),'33')
                         action?.startEditable?.(record.id);
                     }}
                 >
                     编辑
                 </Typography.Link>
-                <Typography.Link>详情</Typography.Link>
-            </Space>
-            
+            </Space> 
         )
     }
 ]
-const UserList = () => {
-<<<<<<< HEAD
-    const actionRef = useRef<ActionType>();
-=======
+const GoodList = () => {
     const [modelVisible, setModelVisible] = useState<boolean>(false)
+    const [formItemType, setFormItemType] = useState<Array<formType>>([])
     const actionRef = useRef<ActionType>();
     const formRef = useRef<ProFormInstance>();
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 
-    const getData = async(params: any) => {
-        const data = await getUserList(params)
+    useEffect(() => {
+        fetchFormType().then(res => {
+            console.log(res)
+            setFormItemType([...res.data])
+        })
+    },[])
+    const getData = async() => {
+        const data = await getGoodList()
         return {
             data: data.data,
             success: true
         }
     }
-    const update = async(params: {key: number, data: userItemType}) => {
-        const res = await updateUserInfo(params)
+    const update = async(params: {key: number, data: goodItemType}) => {
+        const res = await updateGoodInfo(params)
         return {
             data: res.data,
             success: true
         }
     }
-<<<<<<< HEAD
-
-=======
-    const deleteUserItem = async(params:{key:number,row:userItemType}) => {
-        await deleteUser(params)
+    const deleteGoodItem = async(params:{key:number,row:goodItemType}) => {
+        await deleteGood(params)
     }
     
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
     return (
         <PageContainer>
             <ProTable
@@ -131,7 +161,7 @@ const UserList = () => {
                 actionRef={actionRef}
                 request={async (params = {}, sort, filter) => {
                     console.log(sort, filter)
-                    return getData(params)
+                    return getData()
                 }}
                 editable={{
                     type: 'multiple',
@@ -139,13 +169,10 @@ const UserList = () => {
                         console.log(rowKey, data, row);
                         update({key: Number(rowKey), data})
                     },
-<<<<<<< HEAD
-=======
                     onDelete: async (key, row) => {
-                        deleteUserItem({key:Number(key),row})
+                        deleteGoodItem({key:Number(key),row})
                         console.log(key, row);
                     },
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
                 }}
                 rowKey="id"
                 search={{
@@ -155,32 +182,27 @@ const UserList = () => {
                     pageSize: 10,
                 }}
                 dateFormatter="string"
-                headerTitle="客户列表"
+                headerTitle="商品列表"
                 toolBarRender={() => [
-<<<<<<< HEAD
-                    <Button key="button" icon={<PlusOutlined />} type="primary">
-=======
                     <Button 
                         key="button" 
                         icon={<PlusOutlined />}
                         type="primary"
                         onClick={() => setModelVisible(true)}
                     >
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
                         新建
                     </Button>,
                 ]}
             />
-<<<<<<< HEAD
-=======
             <AddModel 
+                title="新增商品"
                 visible={modelVisible}
                 setModelVisible={setModelVisible}
+                formItemType={formItemType}
                 formRef={formRef}
                 actionRef={actionRef}
             />
->>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
         </PageContainer>
     )
 }
-export default UserList
+export default GoodList

@@ -6,11 +6,25 @@ import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
+<<<<<<< HEAD
 import { RequestConfig } from 'umi';
 import { notification } from 'antd'
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/login';
+=======
+<<<<<<< HEAD
+import { RequestConfig } from 'umi';
+import { notification } from 'antd'
+
+const isDev = process.env.NODE_ENV === 'development';
+const loginPath = '/login';
+=======
+
+const isDev = process.env.NODE_ENV === 'development';
+const loginPath = '/user/login';
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 
 /** 获取用户信息比较慢的时候会展示一个 loading */
 export const initialStateConfig = {
@@ -27,6 +41,10 @@ export async function getInitialState(): Promise<{
 }> {
   const fetchUserInfo = async () => {
     try {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
       let info = JSON.parse(localStorage.getItem('currentUser')!) 
       if(!info){
         const msg = await queryCurrentUser();
@@ -34,12 +52,26 @@ export async function getInitialState(): Promise<{
         return msg.data;
       }
       return info
+<<<<<<< HEAD
+=======
+=======
+      const msg = await queryCurrentUser();
+      return msg.data;
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
     } catch (error) {
       history.push(loginPath);
     }
     return undefined;
   };
+<<<<<<< HEAD
   
+=======
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
   // 如果是登录页面，不执行
   if (history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
@@ -54,6 +86,10 @@ export async function getInitialState(): Promise<{
     settings: {},
   };
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 // 请求拦截器 在请求之前 添加header头
 const authHeaderInterceptor = (url: string, options: RequestOptionsInit) => {
   const token = localStorage.getItem('access_token') || ''
@@ -78,10 +114,22 @@ export const request: RequestConfig = {
   requestInterceptors: [authHeaderInterceptor],
 };
 
+<<<<<<< HEAD
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   console.log(initialState,'initialState')
+=======
+
+// ProLayout 支持的api https://procomponents.ant.design/components/layout
+export const layout: RunTimeLayoutConfig = ({ initialState }) => {
+  console.log(initialState,'initialState')
+=======
+
+// ProLayout 支持的api https://procomponents.ant.design/components/layout
+export const layout: RunTimeLayoutConfig = ({ initialState }) => {
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
   return {
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,

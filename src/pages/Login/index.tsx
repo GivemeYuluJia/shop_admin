@@ -165,7 +165,11 @@ const Login: React.FC = () => {
                   }}
                   placeholder={intl.formatMessage({
                     id: 'pages.login.username.placeholder',
+<<<<<<< HEAD
                     defaultMessage: '用户名: admin or user',
+=======
+                    defaultMessage: '用户名: admin or visitor',
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
                   })}
                   rules={[
                     {

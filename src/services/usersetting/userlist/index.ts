@@ -11,4 +11,19 @@ export async function updateUserInfo(params: {key: number, data: userItemType}) 
         method: 'POST',
         params
     })
+<<<<<<< HEAD
+=======
+}
+export async function addUserInfo(params:any) {
+    return request('/api/addUser',{
+        method: 'POST',
+        params
+    })
+}
+export async function deleteUser(params:any) {
+    return request('/api/deleteUser',{
+        method: 'POST',
+        params
+    })
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 }

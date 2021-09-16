@@ -1,4 +1,9 @@
 import { Request, Response } from 'express';
+<<<<<<< HEAD
+=======
+import moment from 'moment';
+
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 let userList = [
     {
         id: 1,
@@ -116,5 +121,36 @@ export default {
             status: 'ok',
             data: userList,
         })
+<<<<<<< HEAD
+=======
+    },
+    'POST /api/adduser': (req: Request, res: Response) => {
+        let { username, useremail } = req.query
+        let createtime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+        let id = userList.length
+        userList.unshift({
+            id,
+            username: String(username),
+            avater_url: '',
+            useremail: String(useremail),
+            status: '0',
+            createtime,
+    
+        })
+        res.send({
+            status: 'ok',
+            data: userList,
+        })
+    },
+    'POST /api/deleteUser': (req: Request, res: Response) => {
+        let { key, row}  = req.query
+        let id = Number(key)
+        let data = JSON.parse(String(row))
+        userList = userList.filter(item => item.id !== id)
+        res.send({
+            status: 'ok',
+            userList
+        })
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
     }
 }

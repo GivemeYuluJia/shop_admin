@@ -55,4 +55,7 @@ npm test
 ## More
 
 You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
+<<<<<<< HEAD
+=======
 # shop_admin
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39

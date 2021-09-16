@@ -1,4 +1,11 @@
 import { Settings as LayoutSettings } from '@ant-design/pro-layout';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
 const Settings: LayoutSettings & {
   pwa?: boolean;
   logo?: string;
@@ -11,10 +18,23 @@ const Settings: LayoutSettings & {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
+<<<<<<< HEAD
   title: '颜哥永远的神',
   pwa: false,
   // logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   logo:'/复仇者联盟-钢铁侠.svg',
+=======
+<<<<<<< HEAD
+  title: '颜哥永远的神',
+  pwa: false,
+  // logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo:'/复仇者联盟-钢铁侠.svg',
+=======
+  title: 'Ant Design Pro',
+  pwa: false,
+  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
+>>>>>>> 204ccfabc26d02852c0770d03433a5ef9658b04b
   iconfontUrl: '',
 };
 

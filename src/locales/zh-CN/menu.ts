@@ -1,6 +1,9 @@
 export default {
   'menu.welcome': '欢迎',
+<<<<<<< HEAD
   'menu.person': '个人页面',
+=======
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',
@@ -8,6 +11,7 @@ export default {
   'menu.login': '登录',
   'menu.register': '注册',
   'menu.register-result': '注册结果',
+<<<<<<< HEAD
   'menu.dashboard': '统计面板',
   'menu.dashboard.analysis': '分析页',
   'menu.dashboard.monitor': '监控页',
@@ -16,6 +20,12 @@ export default {
   'menu.usersetting.userlist': '客户列表',
   'menu.goodsetting': '商品管理',
   'menu.goodsetting.goodlist': '商品列表',
+=======
+  'menu.dashboard': 'Dashboard',
+  'menu.dashboard.analysis': '分析页',
+  'menu.dashboard.monitor': '监控页',
+  'menu.dashboard.workplace': '工作台',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
   'menu.exception.403': '403',
   'menu.exception.404': '404',
   'menu.exception.500': '500',

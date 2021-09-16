@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useCallback, useRef } from 'react';
+=======
+import React, { useCallback } from 'react';
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Spin } from 'antd';
 import { history, useModel } from 'umi';
@@ -20,12 +24,18 @@ const loginOut = async () => {
   const { query = {}, pathname } = history.location;
   const { redirect } = query;
   // Note: There may be security issues, please note
+<<<<<<< HEAD
   if (window.location.pathname !== '/login' && !redirect) {
     // 清除本地存储的token和currentUser
     localStorage.removeItem('access_token')
     localStorage.removeItem('currentUser')
     history.replace({
       pathname: '/login',
+=======
+  if (window.location.pathname !== '/user/login' && !redirect) {
+    history.replace({
+      pathname: '/user/login',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
       search: stringify({
         redirect: pathname,
       }),
@@ -35,6 +45,10 @@ const loginOut = async () => {
 
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   const { initialState, setInitialState } = useModel('@@initialState');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
       const { key } = event;
@@ -85,6 +99,10 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
         </Menu.Item>
       )}
       {menu && <Menu.Divider />}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
       <Menu.Item key="logout">
         <LogoutOutlined />
         退出登录

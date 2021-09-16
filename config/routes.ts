@@ -1,5 +1,6 @@
 ﻿export default [
   {
+<<<<<<< HEAD
     path: '/login',
     layout: false,
     routes: [
@@ -10,6 +11,18 @@
             name: 'login',
             path: '/login',
             component: './Login',
+=======
+    path: '/user',
+    layout: false,
+    routes: [
+      {
+        path: '/user',
+        routes: [
+          {
+            name: 'login',
+            path: '/user/login',
+            component: './user/Login',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
           },
         ],
       },
@@ -19,6 +32,15 @@
     ],
   },
   {
+<<<<<<< HEAD
+=======
+    path: '/welcome',
+    name: 'welcome',
+    icon: 'smile',
+    component: './Welcome',
+  },
+  {
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
     path: '/admin',
     name: 'admin',
     icon: 'crown',
@@ -37,6 +59,7 @@
     ],
   },
   {
+<<<<<<< HEAD
     path: '/dashboard',
     name: 'dashboard',
     icon: 'PieChartOutlined',
@@ -96,6 +119,16 @@
   {
     path: '/',
     redirect: '/person',
+=======
+    name: 'list.table-list',
+    icon: 'table',
+    path: '/list',
+    component: './TableList',
+  },
+  {
+    path: '/',
+    redirect: '/welcome',
+>>>>>>> 223b9a9473b60b7f598598f40e4c843d9aa3ae39
   },
   {
     component: './404',
